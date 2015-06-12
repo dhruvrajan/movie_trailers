@@ -1,0 +1,135 @@
+body {
+    padding-top: 80px;
+}
+
+input {
+    padding: 8px 8px 8px 8px;
+}
+
+.add-movie {
+    padding: 1px 8px 8px 8px;
+    width: 50%;
+    margin: 0 auto;
+    background: #FFA500;
+}
+
+.add-movie input[type="text"] {
+    width: 75%;
+    background-color: #ffd27f;
+    border:2px solid #FFB732;
+}
+
+#remove-movie {
+    cursor: pointer;
+}
+
+#trailer .modal-dialog {
+    margin-top: 200px;
+    width: 640px;
+    height: 480px;
+}
+.hanging-close {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    z-index: 9001;
+}
+#trailer-video {
+    width: 100%;
+    height: 100%;
+}
+.movie-tile {
+    /*margin-bottom: 20px;*/
+    /*padding-top: 20px;*/
+}
+/*.movie-tile:hover {*/
+    /*background-color: #EEE;*/
+    /*cursor: pointer;*/
+/*}*/
+.scale-media {
+    padding-bottom: 56.25%;
+    position: relative;
+}
+.scale-media iframe {
+    border: none;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: white;
+}
+.img-list {
+  -webkit-filter: grayscale(0%);
+  -webkit-transition: all .2s ease;
+     -moz-transition: all .2s ease;
+       -o-transition: all .2s ease;
+      -ms-transition: all .2s ease;
+          transition: all .2s ease;
+}
+
+.img-list:hover {
+  -webkit-filter: grayscale(0%);
+  cursor: pointer;
+}
+
+/*div.img-list {*/
+  /*list-style-type: none;*/
+  /*margin: 0;*/
+  /*padding: 0;*/
+  /*text-align: center;*/
+/*}*/
+
+/*div.img-list div {*/
+  /*display: inline-block;*/
+  /*height: 150px;*/
+  /*margin: 0 1em 1em 0;*/
+  /*position: relative;*/
+  /*width: 150px;*/
+/*}*/
+
+span.text-content {
+  background: rgba(0,0,0,0.5);
+  color: white;
+  cursor: pointer;
+  display: table;
+  height: 150px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 150px;
+}
+
+
+span.text-content {
+  background: rgba(0,0,0,0.5);
+  color: white;
+  cursor: pointer;
+  display: table;
+  height: 342px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 220px;
+  opacity: 0;
+}
+
+div.img-list div:hover span.text-content {
+  opacity: 1;
+}
+span.text-content {
+  background: rgba(0,0,0,0.5);
+  color: white;
+  cursor: pointer;
+  display: table;
+  height: 342px;
+  left: 129px;
+  position: absolute;
+  top: 0;
+  width: 220px;
+  opacity: 0;
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  transition: opacity 500ms;
+}
