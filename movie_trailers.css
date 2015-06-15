@@ -6,22 +6,6 @@ input {
     padding: 8px 8px 8px 8px;
 }
 
-.rating {
-    unicode-bidi: bidi-override;
-    direction: rtl;
-}
-.rating > span {
-    display: inline-block;
-    position: relative;
-    width: 1.1em;
-}
-.rating > span:hover:before,
-
-.rating > span:hover ~ span:before {
-    content: "\2605";
-    position: absolute;
-}
-
 .add-movie {
     padding: 1px 8px 8px 8px;
     width: 100%;
@@ -30,7 +14,7 @@ input {
 }
 
 .add-movie input[type="text"] {
-    width: 75%;
+    width: 50%;
     background-color: #ffd27f;
     border:2px solid #FFB732;
 }

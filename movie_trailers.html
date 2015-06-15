@@ -1,11 +1,14 @@
 <head>
-  <title>movie_trailers</title>
-  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
-  <link rel="stylesheet" href="movie_trailers.css">
-  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-  <script type="text/javascript" charset="utf-8">
+    <title>movie_trailers</title>
+
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+
+    <link rel="stylesheet" href="movie_trailers.css">
+
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
         // Pause the video when the modal is closed
         $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
             // Remove the src so the player itself gets removed, as this is the only
@@ -88,14 +91,13 @@
         <span>{{description}}</span>
       </div>
     </div>
-      <h2>
-          <a id="remove-movie"> <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete-128.png"
-                                   height="25" width="25"></a>
+      <span class="star">&#9734;</span><span class="star">&#9734;</span><span class="star">&#9734;</span><span class="star">&#9734;</span><span class="star">&#9734;</span>
 
-      </h2>
-      <div class="rating">
-          <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+      <div>
+              <a id="remove-movie"> <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete-128.png"
+                                         height="25" width="25"></a>
+          {{title}}
       </div>
-      <h2>{{title}}</h2>
+
   </div>
 </template>
