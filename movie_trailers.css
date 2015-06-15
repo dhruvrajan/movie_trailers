@@ -6,6 +6,22 @@ input {
     padding: 8px 8px 8px 8px;
 }
 
+.rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+}
+.rating > span {
+    display: inline-block;
+    position: relative;
+    width: 1.1em;
+}
+.rating > span:hover:before,
+
+.rating > span:hover ~ span:before {
+    content: "\2605";
+    position: absolute;
+}
+
 .add-movie {
     padding: 1px 8px 8px 8px;
     width: 50%;
@@ -39,13 +55,17 @@ input {
     height: 100%;
 }
 .movie-tile {
-    /*margin-bottom: 20px;*/
-    /*padding-top: 20px;*/
+    margin-bottom: 20px;
+    padding-top: 20px;
 }
-/*.movie-tile:hover {*/
-    /*background-color: #EEE;*/
-    /*cursor: pointer;*/
-/*}*/
+.movie-tile:hover {
+    background-color: #EEE;
+    cursor: pointer;
+}
+.movie-tile:visited {
+    background-color: #EEF;
+    cursor: pointer;
+}
 .scale-media {
     padding-bottom: 56.25%;
     position: relative;
@@ -88,44 +108,26 @@ input {
   /*width: 150px;*/
 /*}*/
 
-span.text-content {
+
+#description {
   background: rgba(0,0,0,0.5);
   color: white;
   cursor: pointer;
   display: table;
-  height: 150px;
-  left: 0;
   position: absolute;
-  top: 0;
-  width: 150px;
-}
-
-
-span.text-content {
-  background: rgba(0,0,0,0.5);
-  color: white;
-  cursor: pointer;
-  display: table;
-  height: 342px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 220px;
   opacity: 0;
 }
 
-div.img-list div:hover span.text-content {
+div.img-list div:hover #description {
   opacity: 1;
 }
-span.text-content {
+#description {
   background: rgba(0,0,0,0.5);
   color: white;
   cursor: pointer;
   display: table;
   height: 342px;
-  left: 129px;
   position: absolute;
-  top: 0;
   width: 220px;
   opacity: 0;
   -webkit-transition: opacity 500ms;

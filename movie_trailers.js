@@ -14,13 +14,22 @@ if (Meteor.isClient) {
   });
 
   Template.body.events({
-    'submit .new-movie': function (event) {
-      var title = event.target.title.value;
-      var description = event.target.description.value;
-      var poster_url = event.target.poster_url.value;
-      var youtube_url = event.target.youtube_url.value;
-      Meteor.call("addMovie", title, description, poster_url, youtube_url)
-    }
+      'submit .new-movie': function (event) {
+          var title = event.target.title.value;
+          var description = event.target.description.value;
+          var poster_url = event.target.poster_url.value;
+          var youtube_url = event.target.youtube_url.value;
+          Meteor.call("addMovie", title, description, poster_url, youtube_url)
+      },
+
+      'submit .add-by-search': function(event) {
+          var title = event.target.title.value;
+          //var movie_data = Meteor.call("searchMovie", title);
+          //Meteor.call("addMovie", title, title, title, title);
+          //Meteor.call("addMovie", title, movie_data.data.plot, movie_data.data.poster, "https://www.youtube.com/watch?v=8BfMivMDOBI")
+          Meteor.call("searchMovie", title);
+      }
+
   });
   Template.movie_tile.events({
     'click button': function () {
@@ -52,7 +61,16 @@ Meteor.methods({
 
   deleteMovie: function (id) {
     Movies.remove(id);
+  },
+
+  searchMovie: function(title) {
+      HTTP.get("http://www.omdbapi.com/?t=" + title + "&y=&plot=short&r=json", function(error, result) {
+          if (!error) {
+              Meteor.call("addMovie", result.data.Title, result.data.Plot, result.data.Poster, "")
+          }
+      });
   }
+
 });
 
 if (Meteor.isServer) {

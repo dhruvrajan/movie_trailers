@@ -49,20 +49,29 @@
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a>
+              <span><img src="http://www.clipartlord.com/wp-content/uploads/2013/07/tomato5.png" width=50 height=50></span>
+
+
+
+              <span><a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a></span>
           </div>
         </div>
       </div>
   </div>
 
   <div class="add-movie">
-      <h3>Add Movie:</h3>
+      <center><h3>Add Movie:</h3></center>
       <form class="new-movie">
         <input type="text" name="title" placeholder="Title of movie ex. Inception" /> <br/>
         <input type="text" name="description" placeholder="Description ex. A man's journey to plant an idea in another's mind" /> <br/>
         <input type="text" name="poster_url"  placeholder="URL of a poster image" /> <br/>
         <input type="text" name="youtube_url"  placeholder="URL of a trailer on youtube" />
         <input type="submit" value="Submit">
+      </form>
+      <center><h3>Add By Title:</h3></center>
+      <form class="add-by-search">
+          <input type="text" name="title" placeholder="Title of movie ex. Inception"/>
+          <input type="submit" value="Submit">
       </form>
   </div> <br>
 
@@ -75,14 +84,21 @@
   <div class="col-md-6 col-lg-4 movie-tile text-center" >
     <div class="img-list" data-trailer-youtube-id={{trailer_youtube_id}}
        data-toggle="modal" data-target="#trailer">
-      <div>
-        <img class="poster" src="{{poster_url}}" width="220" height="342">
-        <span class="text-content"><span>{{description}}</span></span>
+      <div id="poster">
+        <img src="{{poster_url}}" width="220" height="342">
+      </div>
+      <div id="desription">
+        <span>{{description}}</span>
       </div>
     </div>
-    <h2>
-        <a id="remove-movie"> <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete-128.png" height="25" width="25"></a>
-            {{title}}
-    </h2>
+      <h2>
+          <a id="remove-movie"> <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete-128.png"
+                                   height="25" width="25"></a>
+
+      </h2>
+      <div class="rating">
+          <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+      </div>
+      <h2>{{title}}</h2>
   </div>
 </template>
