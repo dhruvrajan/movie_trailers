@@ -47,13 +47,14 @@ if (Meteor.isClient) {
             Session.set('counter', Session.get('counter') + 1);
         },
 
-        //'click .movie-tile': function () {
-        //  Meteor.call("deleteMovie", this._id);
-        //},
 
         'click #remove-movie': function() {
             Meteor.call("deleteMovie", this._id);
         }
+
+        //'click .star': function() {
+        //
+        //}
     });
 
     Accounts.ui.config({
@@ -101,23 +102,6 @@ if (Meteor.isServer) {
 
             console.log("@omdbapi: ", result.data.Title, ", plot: ", result.data.Plot, ", ID: ", result2.items[0].id.videoId);
 
-            //var list = Meteor.wrapAsync(YoutubeApi.search.list.bind(YoutubeApi.search));
-            //get("http://www.omdbapi.com/?t=" + title + "&y=&plot=short&r=json", function(error, result) {
-            //    if (!error) {
-            //        console.log(result.data.Plot);
-            //        list({
-            //            part: "id",
-            //            type: "video",
-            //            maxResults: 3,
-            //            q: result.data.Title + " trailer"
-            //        }, function(error2, result2) {
-            //            if (!error2) {
-            //                console.log(typeof(result2.items[0].id.videoId));
-            //                Meteor.call("addMovie", result.data.Title, result.data.Plot, result.data.Poster, "https://www.youtube.com/watch?v="+result2.items[0].id.videoId);
-            //            }
-            //        });
-            //    }
-            //});
         }
     });
 

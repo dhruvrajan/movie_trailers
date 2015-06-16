@@ -54,11 +54,11 @@
             <div class="navbar-header">
                 <span><img src="http://www.clipartlord.com/wp-content/uploads/2013/07/tomato5.png" width=50 height=50></span>
                 <span><a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a></span>
+                <span class="login">{{> loginButtons}}</span>
             </div>
         </div>
     </div>
 </div>
-{{> loginButtons}}
 {{#if currentUser}}
 <div class="add-movie">
     <center><h3>Add Movie:</h3></center>
@@ -97,25 +97,15 @@
                 <span>{{description}}</span>
             </div>
         </div>
-        <span class="starRating">
-            <input id="rating1" type="radio" name="rating" value="1">
-            <label for="rating1">1</label>
 
-            <input id="rating2" type="radio" name="rating" value="2">
-            <label for="rating2">2</label>
-
-            <input id="rating3" type="radio" name="rating" value="3">
-            <label for="rating3">3</label>
-
-            <input id="rating4" type="radio" name="rating" value="4">
-            <label for="rating4">4</label>
-
-            <input id="rating5" type="radio" name="rating" value="5">
-            <label for="rating5">5</label>
-        </span>
-        <div class="rating">
-            <span class="star" id="star1">&starf;</span><span class="star" id="star2">&starf;</span><span class="star" id="star3">&star;</span><span class="star" id="star4">&starf;</span><span class="star" id="star5">&starf;</span>
-        </div>
+        <form class="rating">
+            <span class="star" id="star1">&star;</span>
+            <span class="star" id="star2">&star;</span>
+            <span class="star" id="star3">&star;</span>
+            <span class="star" id="star4">&star;</span>
+            <span class="star" id="star5">&star;</span>
+        </form>
+        <span id="number-rating">3</span>
         <div>
             <a id="remove-movie"> <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete-128.png"
                                        height="25" width="25"></a>

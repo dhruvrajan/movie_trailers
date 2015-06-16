@@ -6,6 +6,11 @@ input {
     padding: 8px 8px 8px 8px;
 }
 
+.login {
+    position: relative;
+    text-align: right;
+}
+
 .not-found {
     color: red;
 }
@@ -72,25 +77,25 @@ input {
     background-color: white;
 }
 .star {
-    font-size: 130%;
-    color: white;
+    font-size: 150%;
+    color: goldenrod;
     border-color:black;
 }
 .star:hover {
-    color:gold;
-    font-size: 150%;
-    -webkit-transition: font-size 0s;
-}
-.rating {
-    font-size:130%;
-}
-.rating:hover {
-    font-size:180%;
-    -webkit-transition: font-size 0.5s;
+    color:goldenrod;
 }
 
+.rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+}
+.rating > span {
+    display: inline-block;
+    position: relative;
+    width: 1.1em;
+}
 .rating > span:hover:before,
 .rating > span:hover ~ span:before {
-    color:white;
-    border-color: gray;
+    content: "\2605";
+    position: absolute;
 }
