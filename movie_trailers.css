@@ -10,6 +10,10 @@ input {
     color: red;
 }
 
+.movie-tile-title {
+    font-size: 120%;
+}
+
 .add-movie {
     padding: 1px 8px 8px 8px;
     width: 100%;
@@ -67,59 +71,26 @@ input {
     top: 0;
     background-color: white;
 }
-.img-list {
-  -webkit-filter: grayscale(0%);
-  -webkit-transition: all .2s ease;
-     -moz-transition: all .2s ease;
-       -o-transition: all .2s ease;
-      -ms-transition: all .2s ease;
-          transition: all .2s ease;
+.star {
+    font-size: 130%;
+    color: white;
+    border-color:black;
+}
+.star:hover {
+    color:gold;
+    font-size: 150%;
+    -webkit-transition: font-size 0s;
+}
+.rating {
+    font-size:130%;
+}
+.rating:hover {
+    font-size:180%;
+    -webkit-transition: font-size 0.5s;
 }
 
-.img-list:hover {
-  -webkit-filter: grayscale(0%);
-  cursor: pointer;
-}
-
-/*div.img-list {*/
-  /*list-style-type: none;*/
-  /*margin: 0;*/
-  /*padding: 0;*/
-  /*text-align: center;*/
-/*}*/
-
-/*div.img-list div {*/
-  /*display: inline-block;*/
-  /*height: 150px;*/
-  /*margin: 0 1em 1em 0;*/
-  /*position: relative;*/
-  /*width: 150px;*/
-/*}*/
-
-
-#description {
-  background: rgba(0,0,0,0.5);
-  color: white;
-  cursor: pointer;
-  display: table;
-  position: absolute;
-  opacity: 0;
-}
-
-div.img-list div:hover #description {
-  opacity: 1;
-}
-#description {
-  background: rgba(0,0,0,0.5);
-  color: white;
-  cursor: pointer;
-  display: table;
-  height: 342px;
-  position: absolute;
-  width: 220px;
-  opacity: 0;
-  -webkit-transition: opacity 500ms;
-  -moz-transition: opacity 500ms;
-  -o-transition: opacity 500ms;
-  transition: opacity 500ms;
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+    color:white;
+    border-color: gray;
 }

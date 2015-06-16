@@ -6,11 +6,17 @@ if (Meteor.isClient) {
     Template.body.helpers({
         movies: function() {
             return Movies.find();
+        },
+        user_movies: function() {
+            return Movies.find({owner: Meteor.userId()})
         }
     });
 
     Template.movie_tile.helpers({
-
+        'isOwner': function() {
+            //return Meteor.userId() === this.owner;
+            return "False";
+        }
     });
 
     Template.body.events({
@@ -49,6 +55,10 @@ if (Meteor.isClient) {
             Meteor.call("deleteMovie", this._id);
         }
     });
+
+    Accounts.ui.config({
+        passwordSignupFields: "USERNAME_ONLY"
+    });
 }
 
 if (Meteor.isServer) {
@@ -61,18 +71,9 @@ if (Meteor.isServer) {
                 description: description,
                 poster_url: poster_url,
                 youtube_url: youtube_url,
-                trailer_youtube_id: trailer_youtube_id
-            });
-        },
-
-        searchVideo: function(search) {
-            YoutubeApi.search.list({
-                part: "id",
-                type: "video",
-                maxResults: 5,
-                q: search,
-            }, function(err, data) {
-                console.log(err, data);
+                trailer_youtube_id: trailer_youtube_id,
+                createdAt: new Date(),
+                owner: Meteor.userId()
             });
         },
 

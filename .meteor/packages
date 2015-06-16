@@ -9,3 +9,5 @@ autopublish
 insecure
 http
 renaldo:youtube-api
+accounts-password
+accounts-ui

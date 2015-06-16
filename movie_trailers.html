@@ -20,85 +20,107 @@
             var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
             var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
             $("#trailer-video-container").empty().append($("<iframe></iframe>", {
-              'id': 'trailer-video',
-              'type': 'text-html',
-              'src': sourceUrl,
-              'frameborder': 0
+                'id': 'trailer-video',
+                'type': 'text-html',
+                'src': sourceUrl,
+                'frameborder': 0
             }));
         });
         // Animate in the movies when the page loads
         $(document).ready(function () {
-          $('.movie-tile').hide().first().show("fast", function showNext() {
-            $(this).next("div").show("fast", showNext);
-          });
+            $('.movie-tile').hide().first().show("fast", function showNext() {
+                $(this).next("div").show("fast", showNext);
+            });
         });
     </script>
 </head>
 
 <body>
-  <div class="modal" id="trailer">
-      <div class="modal-dialog">
+<div class="modal" id="trailer">
+    <div class="modal-dialog">
         <div class="modal-content">
-          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
-            <img src="/images/gnome_process_stop.png"/>
-          </a>
-          <div class="scale-media" id="trailer-video-container">
-          </div>
+            <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+                <img src="/images/gnome_process_stop.png"/>
+            </a>
+            <div class="scale-media" id="trailer-video-container">
+            </div>
         </div>
-      </div>
-  </div>
+    </div>
+</div>
 
-  <div class="container">
-      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="container">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
-          <div class="navbar-header">
-              <span><img src="http://www.clipartlord.com/wp-content/uploads/2013/07/tomato5.png" width=50 height=50></span>
-              <span><a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a></span>
-          </div>
+            <div class="navbar-header">
+                <span><img src="http://www.clipartlord.com/wp-content/uploads/2013/07/tomato5.png" width=50 height=50></span>
+                <span><a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a></span>
+            </div>
         </div>
-      </div>
-  </div>
-
-  <div class="add-movie">
-      <center><h3>Add Movie:</h3></center>
-      <form class="new-movie">
+    </div>
+</div>
+{{> loginButtons}}
+{{#if currentUser}}
+<div class="add-movie">
+    <center><h3>Add Movie:</h3></center>
+    <form class="new-movie">
         <input type="text" name="title" placeholder="Title of movie ex. Inception" /> <br/>
         <input type="text" name="description" placeholder="Description ex. A man's journey to plant an idea in another's mind" /> <br/>
         <input type="text" name="poster_url"  placeholder="URL of a poster image" /> <br/>
         <input type="text" name="youtube_url"  placeholder="URL of a trailer on youtube" />
         <input type="submit" value="Submit">
-      </form>
-      <center><h3>Add By Title:</h3></center>
-      <form class="add-by-search">
-          <input type="text" name="title" placeholder="Title of movie ex. Inception"/>
-          <input type="submit" value="Submit">
-          <span class="not-found" id="movie-search-not-found"></span>
-      </form>
-  </div> <br>
+    </form>
+    <center><h3>Add By Title:</h3></center>
+    <form class="add-by-search">
+        <input type="text" name="title" placeholder="Title of movie ex. Inception"/>
+        <input type="submit" value="Submit">
+        <span class="not-found" id="movie-search-not-found"></span>
+    </form>
+</div> <br>
 
-  {{#each movies}}
-    {{> movie_tile}}
-  {{/each}}
+<ul>
+    {{#each user_movies}}
+        {{> movie_tile}}
+    {{/each}}
+</ul>
+{{/if}}
+
 </body>
 
 <template name="movie_tile">
-  <div class="col-md-6 col-lg-4 movie-tile text-center" >
-    <div class="img-list" data-trailer-youtube-id={{trailer_youtube_id}}
-       data-toggle="modal" data-target="#trailer">
-      <div id="poster">
-        <img src="{{poster_url}}" width="220" height="342">
-      </div>
-      <div id="desription">
-        <span>{{description}}</span>
-      </div>
+    <div class="col-md-6 col-lg-4 movie-tile text-center" >
+        <div class="img-list" data-trailer-youtube-id={{trailer_youtube_id}}
+                data-toggle="modal" data-target="#trailer">
+            <div id="poster">
+                <img src="{{poster_url}}" width="220" height="342">
+            </div>
+            <div id="desription">
+                <span>{{description}}</span>
+            </div>
+        </div>
+        <span class="starRating">
+            <input id="rating1" type="radio" name="rating" value="1">
+            <label for="rating1">1</label>
+
+            <input id="rating2" type="radio" name="rating" value="2">
+            <label for="rating2">2</label>
+
+            <input id="rating3" type="radio" name="rating" value="3">
+            <label for="rating3">3</label>
+
+            <input id="rating4" type="radio" name="rating" value="4">
+            <label for="rating4">4</label>
+
+            <input id="rating5" type="radio" name="rating" value="5">
+            <label for="rating5">5</label>
+        </span>
+        <div class="rating">
+            <span class="star" id="star1">&starf;</span><span class="star" id="star2">&starf;</span><span class="star" id="star3">&star;</span><span class="star" id="star4">&starf;</span><span class="star" id="star5">&starf;</span>
+        </div>
+        <div>
+            <a id="remove-movie"> <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete-128.png"
+                                       height="25" width="25"></a>
+            <span class="movie-tile-title">{{title}}</span>
+        </div>
+
     </div>
-      <span class="star">&#9734;</span><span class="star">&#9734;</span><span class="star">&#9734;</span><span class="star">&#9734;</span><span class="star">&#9734;</span>
-
-      <div>
-              <a id="remove-movie"> <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete-128.png"
-                                         height="25" width="25"></a>
-          {{title}}
-      </div>
-
-  </div>
 </template>
