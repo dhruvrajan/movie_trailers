@@ -6,6 +6,10 @@ input {
     padding: 8px 8px 8px 8px;
 }
 
+.not-found {
+    color: red;
+}
+
 .add-movie {
     padding: 1px 8px 8px 8px;
     width: 100%;
