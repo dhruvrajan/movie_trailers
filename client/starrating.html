@@ -1,0 +1,13 @@
+<template name="starrating">
+    <div class="starrating">
+        {{#each indices}}
+            <span class="star">
+                {{#if filled this ..}}
+                    &starf;
+                {{else}}
+                    &star;
+                {{/if}}
+            </span>
+        {{/each}}
+    </div>
+</template>

@@ -13,10 +13,6 @@ if (Meteor.isClient) {
     });
 
     Template.movie_tile.helpers({
-        'isOwner': function() {
-            //return Meteor.userId() === this.owner;
-            return "False";
-        }
     });
 
     Template.body.events({
@@ -41,6 +37,7 @@ if (Meteor.isClient) {
         }
 
     });
+
     Template.movie_tile.events({
         'click button': function() {
             // increment the counter when button is clicked
@@ -50,11 +47,7 @@ if (Meteor.isClient) {
 
         'click #remove-movie': function() {
             Meteor.call("deleteMovie", this._id);
-        }
-
-        //'click .star': function() {
-        //
-        //}
+        },
     });
 
     Accounts.ui.config({
@@ -74,7 +67,8 @@ if (Meteor.isServer) {
                 youtube_url: youtube_url,
                 trailer_youtube_id: trailer_youtube_id,
                 createdAt: new Date(),
-                owner: Meteor.userId()
+                owner: Meteor.userId(),
+                rating: -1
             });
         },
 
@@ -102,6 +96,10 @@ if (Meteor.isServer) {
 
             console.log("@omdbapi: ", result.data.Title, ", plot: ", result.data.Plot, ", ID: ", result2.items[0].id.videoId);
 
+        },
+
+        rateMovie: function (id, rating) {
+            Movies.update(id, {$set: {rating: rating}});
         }
     });
 
