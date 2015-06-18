@@ -1,19 +1,19 @@
 Movies = new Mongo.Collection("movies");
 
 if (Meteor.isClient) {
-    Meteor.subscribe("movies")
-
+    Meteor.subscribe("movies");
+    Session.setDefault("sort-by", "rating")
     Template.body.helpers({
-        movies: function() {
-            return Movies.find();
-        },
+        //movies: function() {
+        //    return Movies.find();
+        //},
         user_movies: function() {
-            return Movies.find({owner: Meteor.userId()})
+            var sort_query = {};
+            sort_query[Session.get("sort-by")] =  -1;
+            return Movies.find({owner: Meteor.userId()}, {sort: sort_query})
         }
     });
 
-    Template.movie_tile.helpers({
-    });
 
     Template.body.events({
         'submit .new-movie': function(event) {
@@ -24,30 +24,20 @@ if (Meteor.isClient) {
             Meteor.call("addMovie", title, description, poster_url, youtube_url)
         },
 
+        'change .order-by': function(event) {
+            //console.log("@change sort: ", event.target.value);
+            Session.set("sort-by", event.target.value)
+        },
+
         'submit .add-by-search': function(event) {
             event.preventDefault();
 
             var title = event.target.title.value;
-            //var movie_data = Meteor.call("searchMovie", title);
-            //Meteor.call("addMovie", title, title, title, title);
-            //Meteor.call("addMovie", title, movie_data.data.plot, movie_data.data.poster, "https://www.youtube.com/watch?v=8BfMivMDOBI")
             var result = Meteor.call("searchMovie", title);
             console.log("@result: ", result);
             console.log("@call complete");
         }
 
-    });
-
-    Template.movie_tile.events({
-        'click button': function() {
-            // increment the counter when button is clicked
-            Session.set('counter', Session.get('counter') + 1);
-        },
-
-
-        'click #remove-movie': function() {
-            Meteor.call("deleteMovie", this._id);
-        },
     });
 
     Accounts.ui.config({
@@ -58,15 +48,16 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
 
     Meteor.methods({
-        addMovie: function(title, description, poster_url, youtube_url) {
+        addMovie: function(title, description, year, poster_url, youtube_url) {
             var trailer_youtube_id = youtube_url.substring(youtube_url.indexOf("watch?v=") + 8, youtube_url.length);
             Movies.insert({
                 title: title,
                 description: description,
+                year: parseInt(year),
                 poster_url: poster_url,
                 youtube_url: youtube_url,
                 trailer_youtube_id: trailer_youtube_id,
-                createdAt: new Date(),
+                date_created: new Date(),
                 owner: Meteor.userId(),
                 rating: -1
             });
@@ -92,10 +83,10 @@ if (Meteor.isServer) {
                 q: result.data.Title + " trailer"
             });
 
-            Meteor.call("addMovie", result.data.Title, result.data.Plot, result.data.Poster, "https://www.youtube.com/watch?v="+result2.items[0].id.videoId);
-
-            console.log("@omdbapi: ", result.data.Title, ", plot: ", result.data.Plot, ", ID: ", result2.items[0].id.videoId);
-
+            Meteor.call("addMovie", result.data.Title, result.data.Plot, result.data.Year, result.data.Poster,
+                "https://www.youtube.com/watch?v="+result2.items[0].id.videoId);
+            console.log("@omdbapi: ", result.data.Title, ", plot: ", result.data.Plot, ", ID: ",
+                result2.items[0].id.videoId);
         },
 
         rateMovie: function (id, rating) {
