@@ -1,8 +1,9 @@
 .starrating > .star {
-    font-size: 150%;
-    color: goldenrod;
+  font-size: 150%;
+  color: goldenrod;
 }
+
 .starrating > .star:hover:before,
 .starrating > .star:hover ~ .star:before {
-    color: red;
+  color: red;
 }
