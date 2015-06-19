@@ -31,10 +31,7 @@ Template.body.events({
     console.log("@result: ", result);
     console.log("@call complete");
   },
-
-  'keypress #trailer-video-container': function (event) {
-    console.log("@body Escape Clicked", event);
-    //if (event.keyCode == 27) {
-    //}
+  'keyup': function (event) {
+    console.log("@body Clicked", event);
   }
 });
