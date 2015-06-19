@@ -1,26 +1,23 @@
 <template name="movie_tile">
-  <div class="col-md-6 col-lg-4 movie-tile text-center">
-    <div class="img-list" data-trailer-youtube-id={{trailer_youtube_id}}
-        data-toggle="modal" data-target="#trailer">
-      <div id="poster">
-        <img src="{{poster_url}}" width="220" height="342">
-      </div>
-      <div id="desription">
-        <span>{{description}}</span>
-      </div>
+    <div class="col-md-6 col-lg-4 movie-tile text-center" >
+        <div class="img-list" data-trailer-youtube-id={{trailer_youtube_id}}
+                data-toggle="modal" data-target="#trailer">
+            <div id="poster">
+                <img src="{{poster_url}}" width="220" height="342">
+            </div>
+            <div id="desription">
+                <span>{{description}}</span>
+            </div>
+        </div>
+
+        {{> starrating}}
+
+        <span id="metascore">{{metascore}}</span>
+        <div>
+            <a id="remove-movie"> <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete-128.png"
+                                       height="25" width="25"></a>
+            <span class="movie-tile-title">{{title}} ({{year}})</span>
+        </div>
+
     </div>
-
-    {{> starrating}}
-
-    <span id="metascore">{{metascore}}</span>
-
-    <div>
-      <a id="remove-movie">
-        <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete-128.png"
-             height="25" width="25">
-      </a>
-      <span class="movie-tile-title">{{title}} ({{year}})</span>
-    </div>
-
-  </div>
 </template>

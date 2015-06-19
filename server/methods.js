@@ -1,9 +1,5 @@
-//KeyboardJS.on('a', function() {
-//  console.log('you pressed a!');
-//});
-
 Meteor.methods({
-  addMovie: function (title, description, year, poster_url, youtube_url) {
+  addMovie: function(title, description, year, poster_url, youtube_url) {
     var trailer_youtube_id = youtube_url.substring(youtube_url.indexOf("watch?v=") + 8, youtube_url.length);
     Movies.insert({
       title: title,
@@ -18,11 +14,11 @@ Meteor.methods({
     });
   },
 
-  deleteMovie: function (id) {
+  deleteMovie: function(id) {
     Movies.remove(id);
   },
 
-  searchMovie: function (title) {
+  searchMovie: function(title) {
     var result = Meteor.wrapAsync(HTTP.get)("http://www.omdbapi.com/?t=" + title + "&y=&plot=short&r=json");
 
     if (result && result.data.Error) {
@@ -39,7 +35,7 @@ Meteor.methods({
     });
 
     Meteor.call("addMovie", result.data.Title, result.data.Plot, result.data.Year, result.data.Poster,
-        "https://www.youtube.com/watch?v=" + result2.items[0].id.videoId);
+        "https://www.youtube.com/watch?v="+result2.items[0].id.videoId);
     console.log("@omdbapi: ", result.data.Title, ", plot: ", result.data.Plot, ", ID: ",
         result2.items[0].id.videoId);
   },
