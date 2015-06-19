@@ -1,58 +1,60 @@
 <body>
-<div class="modal" id="trailer">
+<paper-scroll-header-panel>
+  <paper-toolbar>
+    <paper-icon-button icon="menu" style="color: white;"></paper-icon-button>
+    <div class="title">
+      <!--<img src="http://www.clipartlord.com/wp-content/uploads/2013/07/tomato5.png" width="25" height="25">-->
+      Title
+    </div>
+    <span class="login">{{> loginButtons}}</span>
+    <paper-icon-button icon="more-vert" style="color: white;" on-tap="moreAction"></paper-icon-button>
+  </paper-toolbar>
+  <div class="modal" id="trailer">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
-                <img src="/images/gnome_process_stop.png"/>
-            </a>
-            <div class="scale-media" id="trailer-video-container">
-            </div>
-        </div>
-    </div>
-</div>
+      <div class="modal-content">
+        <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+          <img src="/images/gnome_process_stop.png"/>
+        </a>
 
-<div class="container">
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <span><img src="http://www.clipartlord.com/wp-content/uploads/2013/07/tomato5.png" width=50 height=50></span>
-                <span><a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a></span>
-                <span class="login">{{> loginButtons}}</span>
-            </div>
+        <div class="scale-media" id="trailer-video-container">
         </div>
+      </div>
     </div>
-</div>
-{{#if currentUser}}
+  </div>
+
+  {{#if currentUser}}
     <div class="add-movie">
-        <center><h3>Add Movie:</h3></center>
-        <form class="new-movie">
-            <input type="text" name="title" placeholder="Title of movie ex. Inception" /> <br/>
-            <input type="text" name="description" placeholder="Description ex. A man's journey to plant an idea in another's mind" /> <br/>
-            <input type="text" name="poster_url"  placeholder="URL of a poster image" /> <br/>
-            <input type="text" name="youtube_url"  placeholder="URL of a trailer on youtube" />
-            <input type="submit" value="Submit">
-        </form>
-        <center><h3>Add By Title:</h3></center>
-        <form class="add-by-search">
-            <input type="text" name="title" placeholder="Title of movie ex. Inception"/>
-            <input type="submit" value="Submit">
-            <span class="not-found" id="movie-search-not-found"></span>
-        </form>
+      <center><h3>Add Movie:</h3></center>
+      <form class="new-movie">
+        <input type="text" name="title" placeholder="Title of movie ex. Inception"/> <br/>
+        <input type="text" name="description"
+               placeholder="Description ex. A man's journey to plant an idea in another's mind"/> <br/>
+        <input type="text" name="poster_url" placeholder="URL of a poster image"/> <br/>
+        <input type="text" name="youtube_url" placeholder="URL of a trailer on youtube"/>
+        <input type="submit" value="Submit">
+      </form>
+      <center><h3>Add By Title:</h3></center>
+      <form class="add-by-search">
+        <input type="text" name="title" placeholder="Title of movie ex. Inception"/>
+        <input type="submit" value="Submit">
+        <span class="not-found" id="movie-search-not-found"></span>
+      </form>
     <span>
         Sort By:
         <select class="order-by">
-            <option value="rating">Rating</option>
-            <option value="year">Year</option>
-            <option value="date_created">Date Added</option>
+          <option value="rating">Rating</option>
+          <option value="year">Year</option>
+          <option value="date_created">Date Added</option>
         </select>
     </span>
-    </div> <br>
+    </div>
+    <br>
 
     <ul>
-        {{#each user_movies}}
-            {{> movie_tile}}
-        {{/each}}
+      {{#each user_movies}}
+        {{> movie_tile}}
+      {{/each}}
     </ul>
-{{/if}}
-
+  {{/if}}
+</paper-scroll-header-panel>
 </body>
