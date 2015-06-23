@@ -1,0 +1,14 @@
+<template name="youtube_modal">
+  <a class="modal-trigger" href="#openModal">View Trailer</a>
+  <div id="openModal" class="modalDialog">
+    <div>
+      <center>
+        <google-youtube video-id={{id}} height="540px" width="960px" rel="0" class="youtube-video"></google-youtube>
+      </center>
+
+      <a href="#" title="Close" class="close">
+        <img src="/images/gnome_process_stop.png">
+      </a>
+    </div>
+  </div>
+</template>

@@ -1,15 +1,32 @@
+#description {
+  font-family: Roboto, sans-serif;
+  font-weight: 100;
+}
+
 .movie-tile-title {
-    font-size: 120%;
+  font-size: 120%;
+}
+
+.poster {
+  width: 50%;
+  margin: 0 auto;
 }
 .movie-tile {
-    margin-bottom: 20px;
-    padding-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  width: 450px;
+  height:500px;
 }
+
 .movie-tile:hover {
-    background-color: #EEE;
-    cursor: pointer;
+  background-color: #EEE;
+  cursor: pointer;
 }
+
 .movie-tile:visited {
-    background-color: #EEF;
-    cursor: pointer;
+  background-color: #EEF;
+  cursor: pointer;
+}
+.movie-tile {
+  float: left;
 }
