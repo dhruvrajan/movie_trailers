@@ -24,15 +24,11 @@ Template.body.events({
     console.log("@selected: ", event.target.getAttribute("name"));
     Session.set("sort-by", event.target.getAttribute("name"));
   },
-
-  'click #show-video': function (event, template) {
-    if (template.find(".youtube-video").style.display == "block") {
-      template.find(".youtube-video").style.display = "none";
-    } else {
-      template.find(".youtube-video").style.display = "block";
-    }
+  'click .close': function (event, template) {
+    template.find("#youtube-video").seekTo(0);
+    template.find("#youtube-video").pause();
+    console.log("@closing video");
   },
-
   'submit .add-by-search': function (event) {
     event.preventDefault();
 

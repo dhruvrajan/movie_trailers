@@ -8,18 +8,10 @@ Template.movie_tile.events({
     Meteor.call("deleteMovie", this._id);
   },
 
-  'click .close': function (event, template) {
-    template.find(".youtube-video").seekTo(0);
-    template.find(".youtube-video").pause();
-    console.log("@closing video");
-  },
-
-  'click .movie-tile': function (event, template) {
-    console.log("@playing video");
+  'click .modal-trigger': function () {
+    console.log("@playing video: ", this.youtube_url);
     var video = document.getElementById("youtube-video");
-    video.videoId = this.youtube_url;
-    video.style.display = "block";
-    //window.open('#openModal');
+    video.videoId = this.youtube_url.substring(32);
     video.play();
   }
 });

@@ -1,28 +1,28 @@
 <template name="movie_tile">
-  <div class="movie-tile">
-    <!--<a href="#openModal">View Trailer</a>-->
-    <div class="img-list">
-      <div id="poster">
+    <div class="movie-tile">
+      <a href="#openModal" class="modal-trigger">
+        <div class="img-list">
+          <div class="poster">
+            <center>
+              <img src="{{poster_url}}" width="220" height="342">
+            </center>
+          </div>
+          <div class="description">
+            <center><span>{{description}}</span></center>
+          </div>
+        </div>
+      </a>
+
+      <center>{{> starrating}}</center>
+
+      <span id="metascore">{{metascore}}</span>
+
+      <div>
         <center>
-          <img src="{{poster_url}}" width="220" height="342">
+          <a id="remove-movie"> <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete-128.png"
+                                     height="25" width="25"></a>
+          <span class="movie-tile-title">{{title}} ({{year}})</span>
         </center>
       </div>
-      <div id="description">
-        <center><span>{{description}}</span></center>
-      </div>
     </div>
-
-    <center>{{> starrating}}</center>
-
-    <span id="metascore">{{metascore}}</span>
-
-    <div>
-      <center>
-        <a id="remove-movie"> <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete-128.png"
-                                   height="25" width="25"></a>
-        <span class="movie-tile-title">{{title}} ({{year}})</span>
-      </center>
-    </div>
-    <!--</a>-->
-  </div>
 </template>
