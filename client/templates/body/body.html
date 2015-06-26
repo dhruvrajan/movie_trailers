@@ -11,7 +11,7 @@
 {{#if currentUser}}
   <div class="movie-input">
     <span class="add-movie">
-      <center><h3>Add Movie:</h3></center>
+      <h3 class="center">Add Movie:</h3>
       <form class="new-movie">
         <input class="textinput" type="text" name="title" placeholder="Title of movie ex. Inception"/> <br/>
         <input class="textinput" type="text" name="description"
@@ -20,7 +20,7 @@
         <input class="textinput" type="text" name="youtube_url" placeholder="URL of a trailer on youtube"/>
         <input type="submit" value="Submit">
       </form>
-      <center><h3>Add By Title:</h3></center>
+      <h3 class="center">Add By Title:</h3>
       <form class="add-by-search">
         <input width="50" type="text" name="title" placeholder="Title of movie ex. Inception"/>
         <input type="submit" value="Submit">
@@ -39,9 +39,8 @@
 
   <div id="openModal" class="modalDialog">
     <div>
-      <center>
-        <google-youtube video-id="V3-a58Wt2tk" height="540px" width="960px" rel="0" id="youtube-video"></google-youtube>
-      </center>
+        <google-youtube class="center" video-id="V3-a58Wt2tk" height="540px" width="960px" rel="0" id="youtube-video">
+        </google-youtube>
 
       <a href="#" title="Close" class="close">
         <img src="/images/gnome_process_stop.png">
@@ -55,6 +54,6 @@
     {{/each}}
   </ul>
 {{else}}
-  <center>Please sign in.</center>
+  <h3 class="center">Please sign in.</h3>
 {{/if}}
 </body>

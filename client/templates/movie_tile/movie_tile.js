@@ -16,7 +16,3 @@ Template.movie_tile.events({
     video.play();
   }
 });
-
-Template.movie_tile.helpers({
-
-});

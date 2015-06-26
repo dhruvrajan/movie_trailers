@@ -5,10 +5,10 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
 http
-renaldo:youtube-api
 accounts-password
 accounts-ui
 boxxa:polymer
 boxxa:polymer-paper
+renaldo:youtube-api
+autopublish

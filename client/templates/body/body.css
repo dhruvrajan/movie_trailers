@@ -83,3 +83,8 @@ input {
   text-decoration: none;
   border-radius: 12px;
 }
+
+.center {
+  align-content: center;
+  text-align: center;
+}
